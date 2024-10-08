@@ -1,0 +1,197 @@
+/* Header Styles */
+/* Carousel Section */
+/* Adjust the carousel item to a fixed size */
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .carousel-item img {
+      max-width: 100%;
+      height: auto; /* Let the height adjust to maintain the aspect ratio */
+    }
+  }
+  
+.carousel-section {
+    margin-top: 1px;
+    padding: 40px;
+    text-align: center;
+    background-color: #f8f8f8;
+    padding-bottom: 50px;
+}
+
+.carousel-section h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #333;
+}
+
+.carousel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Set a fixed height and width for all carousel images */
+.carousel-item img {
+    margin-left: 480px;
+    width: 100%;
+    max-width: 500px; /* Adjust this as per your design */
+    height: 300px;     /* Adjust this as per your design */
+    object-fit: cover; /* This keeps the image ratio intact while fitting it in the container */
+}
+
+.carousel-item h3 {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #555;
+}
+
+  
+  /* Rest of your existing CSS remains unchanged */
+  
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .logo {
+    font-size: 24px;
+  }
+  
+  .nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+  }
+  
+  .auth-buttons button {
+    margin: 0 10px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .auth-buttons button:hover {
+    background-color: #ff3f3f;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    /*background: url('hero-bg.jpg') center/cover no-repeat;*/
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+  }
+  
+  .hero-section h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section p {
+    font-size: 18px;
+    margin-top: 30px;
+  }
+  
+  .cta-buttons .cta-btn {
+    margin: 10px;
+    padding: 15px 30px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top:30px;
+  }
+  
+  .cta-buttons .cta-btn:hover {
+    
+    background-color: #ff3f3f;
+  }
+  
+  /* Event Cards */
+  .featured-events, .personalized-events {
+    padding: 50px 20px;
+    background-color: rgb(235, 229, 229);
+  }
+  
+  .event-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .event-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    margin: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .event-card h3 {
+    font-size: 20px;
+    margin: 15px 0;
+  }
+  
+  .event-card p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .event-btn {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .event-btn:hover {
+    background-color: #ff3f3f;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 40px 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+  }
+  
+  .quick-links a, .social-media a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+  }
+  
+  .newsletter input {
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  .subscribe-btn {
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .subscribe-btn:hover {
+    background-color: #ff3f3f;
+  }
+  
