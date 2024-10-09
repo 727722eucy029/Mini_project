@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import { useNavigate } from 'react-router-dom';
 import './HomePage.css'; // Add CSS styles
 import Seminar from '../Pictures/Seminar.jpg';
 import Hackathon from '../Pictures/Hackathons.jpg';
@@ -8,6 +9,8 @@ import Workshop from '../Pictures/workshop.jpg';
 import Conference from '../Pictures/conference.jpg';
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  
   // Sample data for the carousel items
   const carouselItems = [
     { imgSrc: Seminar, title: 'Seminars' },
@@ -16,6 +19,10 @@ const HomePage = () => {
     { imgSrc: Workshop, title: 'Workshops' },
     { imgSrc: Conference, title: 'Conferences' },
   ];
+
+  const handleExplore = () => {
+    navigate('/ExploreEvents');
+  };
 
   // Settings for the react-slick carousel
   const settings = {
@@ -57,27 +64,37 @@ const HomePage = () => {
           <a href="#admin">Admin</a>
           <a href="#help">Help</a>
         </nav>
-        
       </header>
 
-      {/* Carousel */}
+      {/* Carousel Section */}
       <section className="carousel-section">
-        <h2>Explore Our Events</h2>
-        <Slider {...settings}>
-          {carouselItems.map((item, index) => (
-            <div className="carousel-item" key={index}>
-              <img src={item.imgSrc} alt={item.title} />
-              <h3>{item.title}</h3>
+        <div className="carousel-container">
+          <div className="carousel-text">
+            <h2>Explore Our Events</h2>
+            <p>
+              Discover a wide range of events at our college, from hackathons to seminars,
+              cultural fests to workshops. Whether you're looking to learn something new
+              or showcase your skills, we've got an event for you!
+            </p>
+            <div className="cta-buttons">
+              <button className="cta-btn" onClick={handleExplore}>Explore Events</button>
+              <button className="cta-btn">Create Profile</button>
             </div>
-          ))}
-        </Slider>
-        <div className="hero-content">
-        <div className="cta-buttons">
-            <button className="cta-btn">Explore Events</button>
-            <button className="cta-btn">Create Profile</button>
           </div>
+          
+          <div className="carousel-wrapper">
+            <Slider {...settings}>
+              {carouselItems.map((item, index) => (
+                <div className="carousel-item" key={index}>
+                  <img src={item.imgSrc} alt={item.title} />
+                  <h3>{item.title}</h3>
+                </div>
+              ))}
+            </Slider>
           </div>
+        </div>
       </section>
+
       {/* Featured Events */}
       <section className="featured-events">
         <h2>Upcoming Events</h2>
@@ -96,8 +113,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-
 
       {/* Footer */}
       <footer className="footer">

@@ -1,0 +1,162 @@
+/* Explore Events Page Styles */
+.explore-header {
+    padding: 30px;
+    background-color: #24292e; /* Dark background for header */
+    color: white;
+    text-align: center;
+}
+
+.header .logo {
+    font-size: 28px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header .nav a {
+    font-size: 18px;
+    padding: 0 15px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header .nav a:hover {
+    color: #61dafb; /* Light blue on hover */
+}
+
+.events-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center align the event cards */
+    gap: 30px;
+    padding: 40px;
+    background-color: #f9f9f9; /* Light background for the grid */
+}
+
+.event-card {
+    background-color: #fff; /* White background for cards */
+    border-radius: 12px; /* Rounded corners */
+    overflow: hidden; /* Prevent overflow of content */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 350px; /* Max width for cards */
+    margin: 20px;
+}
+
+.event-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+.event-card img {
+    width: 100%;
+    height: 220px; /* Fixed height for images */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-bottom: 1px solid #f0f0f0; /* Border below image */
+}
+
+.event-card h3 {
+    font-family: 'Poppins', sans-serif; /* Font style */
+    font-size: 1.6em; /* Title font size */
+    margin: 12px 0; /* Margin above and below */
+    color: #333; /* Darker text color */
+}
+
+.event-card p {
+    font-size: 0.9em; /* Smaller font size for date and location */
+    margin: 10px 0; /* Margin above and below */
+    color: #666; /* Gray text color */
+}
+
+.event-card .event-btn {
+    background-color: #007BFF; /* Button background color */
+    color: white; /* Button text color */
+    padding: 12px; /* Padding inside button */
+    border-radius: 6px; /* Rounded corners for button */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease; /* Transition for background color */
+    border: none; /* Remove default border */
+}
+
+.event-card .event-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    display: flex;
+    justify-content: center; /* Center the modal */
+    align-items: center; /* Center the modal */
+    z-index: 999; /* Ensure it appears above other elements */
+}
+
+.modal-content {
+    background: white; /* White background for modal */
+    padding: 25px; /* Padding inside modal */
+    border-radius: 15px; /* Rounded corners for modal */
+    max-width: 500px; /* Max width for modal */
+    width: 90%; /* Full width on smaller screens */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    position: relative; /* Needed for absolute positioning of close button */
+    text-align: center; /* Center text in modal */
+}
+
+.close-button {
+    position: absolute; /* Position close button absolutely */
+    top: 10px; /* Position from top */
+    right: 15px; /* Position from right */
+    font-size: 2rem; /* Size of close button */
+    color: #ff6b6b; /* Color for close button */
+    cursor: pointer; /* Pointer cursor for close button */
+}
+
+/* Footer Styles */
+.footer {
+    padding: 40px 20px; /* Padding for footer */
+    background-color: #24292e; /* Dark background for footer */
+    color: white; /* White text in footer */
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Column layout */
+    align-items: center; /* Center align items */
+}
+
+.footer .quick-links, .footer .social-media {
+    display: flex; /* Flexbox for links */
+    gap: 25px; /* Space between links */
+    margin-bottom: 20px; /* Margin below */
+}
+
+.footer a {
+    color: #ddd; /* Light gray for links */
+    text-decoration: none; /* No underline */
+    font-size: 16px; /* Font size for links */
+}
+
+.footer a:hover {
+    color: #61dafb; /* Light blue on hover */
+}
+
+.footer .newsletter input {
+    padding: 12px; /* Padding for input */
+    border-radius: 8px; /* Rounded corners */
+    border: none; /* Remove default border */
+    width: 200px; /* Fixed width for input */
+}
+
+.footer .subscribe-btn {
+    padding: 12px 20px; /* Padding for subscribe button */
+    background-color: #ff6b6b; /* Button background color */
+    color: white; /* Button text color */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.footer .subscribe-btn:hover {
+    background-color: #ff3f3f; /* Darker red on hover */
+}
