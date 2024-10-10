@@ -1,13 +1,13 @@
 /* src/components/LandingPage.css */
-* {
+/* * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #1a1a1a; /* Dark background for a rebel vibe */
-}
+    background-color: #1a1a1a; /* Dark background for a rebel vibe 
+} */
 
 .landing-page {
     display: flex;

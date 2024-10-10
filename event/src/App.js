@@ -5,6 +5,7 @@ import LandingPage from './Components/Land/LandingPage';
 import StaffSignIn from './Components/Land/StaffSignIn';
 import StaffSignUp from './Components/Land/StaffSignUp';
 import ProfilePage from './Components/ProfilePage';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
   return (
