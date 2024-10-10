@@ -63,7 +63,7 @@ const StaffSignIn = () => {
             />
             {errors.password && <span className="error">{errors.password}</span>}
           </div>
-          <button type="submit" className="auth-button" onClick={()=> handleRedirect('home')}>Sign In</button>
+          <button type="submit" className="auth-button" onClick={()=> handleRedirect('/')}>Sign In</button>
         </form>
         <p className="toggle-link" onClick={() => handleRedirect('/signup')}>
           Don't have an account? Sign Up

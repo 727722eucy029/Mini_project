@@ -3,52 +3,53 @@
   margin-top: 1px;
   padding: 40px;
   text-align: center;
-  background-color: #f8f8f8;
+  background-color: #1a1a1a; /* Dark background */
   padding-bottom: 50px;
 }
 
 .carousel-container {
   display: flex;
-  align-items: center; /* Vertically center the items */
-  justify-content: space-between; /* Add space between the text and carousel */
-  flex-wrap: wrap; /* Wrap on smaller screens */
-  gap: 30px; /* Add space between the text and carousel */
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
 .carousel-text {
   flex: 1;
-  max-width: 40%; /* Take up 40% of the width */
+  max-width: 40%;
   text-align: left;
+  color: #e0e0e0; /* Light gray text for contrast */
 }
 
 .carousel-wrapper {
   flex: 1;
-  max-width: 50%; /* Take up 50% of the width */
-  margin-left: auto; /* Push the carousel to the right */
+  max-width: 50%;
+  margin-left: auto;
 }
 
-/* Set a fixed height and width for all carousel images */
 .carousel-item img {
   margin-left: 120px;
   width: 100%;
-  max-width: 500px; /* Adjust this as per your design */
-  height: 300px; /* Adjust this as per your design */
-  object-fit: cover; /* This keeps the image ratio intact while fitting it in the container */
+  max-width: 500px;
+  height: 300px;
+  object-fit: cover;
+  border: 3px solid #ff3f3f; /* Bold red border */
 }
 
 @media (max-width: 768px) {
   .carousel-container {
-      flex-direction: column; /* Stack the text and carousel vertically */
-      text-align: center;
+    flex-direction: column;
+    text-align: center;
   }
 
   .carousel-text, .carousel-wrapper {
-      max-width: 100%; /* Take full width */
+    max-width: 100%;
   }
 
   .carousel-item img {
-      max-width: 100%;
-      height: auto; /* Maintain aspect ratio */
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -58,38 +59,45 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #333;
-  color: white;
+  background-color: #111; /* Deep black background */
+  color: #ff3f3f; /* Bold red text */
 }
 
 .logo {
   font-size: 24px;
+  font-family: 'Impact', sans-serif; /* Bold, rebellious font */
 }
 
 .nav a {
-  color: white;
+  color: #ff3f3f;
   margin: 0 15px;
   text-decoration: none;
+  font-weight: bold;
+}
+
+.nav a:hover {
+  color: #ff6b6b;
 }
 
 /* Call to Action Buttons */
 .cta-buttons .cta-btn {
   margin: 10px;
   padding: 15px 30px;
-  background-color: #ff6b6b;
+  background-color: #ff3f3f;
   color: white;
   border: none;
   cursor: pointer;
+  font-family: 'Arial Black', sans-serif; /* Bold, edgy font */
 }
 
 .cta-buttons .cta-btn:hover {
-  background-color: #ff3f3f;
+  background-color: #ff1f1f;
 }
 
 /* Featured Events */
 .featured-events {
   padding: 50px 20px;
-  background-color: rgb(235, 229, 229);
+  background-color: #2a2a2a; /* Dark gray background */
 }
 
 .event-cards {
@@ -99,13 +107,13 @@
 }
 
 .event-card {
-  background-color: white;
+  background-color: #1a1a1a;
   border-radius: 8px;
   overflow: hidden;
   width: 300px;
   margin: 20px;
   text-align: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 8px rgba(255, 63, 63, 0.5); /* Red shadow for the edgy feel */
 }
 
 .event-card img {
@@ -117,53 +125,62 @@
 .event-card h3 {
   font-size: 20px;
   margin: 15px 0;
+  color: #ff3f3f; /* Red for headings */
 }
 
 .event-card p {
   font-size: 16px;
   margin: 10px 0;
+  color: #e0e0e0; /* Light gray text */
 }
 
 .event-btn {
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #ff6b6b;
+  background-color: #ff3f3f;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .event-btn:hover {
-  background-color: #ff3f3f;
+  background-color: #ff1f1f;
 }
 
 /* Footer */
 .footer {
   padding: 40px 20px;
-  background-color: #333;
-  color: white;
+  background-color: #111;
+  color: #ff3f3f;
   text-align: center;
 }
 
 .quick-links a, .social-media a {
-  color: white;
+  color: #ff3f3f;
   margin: 0 15px;
   text-decoration: none;
+}
+
+.quick-links a:hover, .social-media a:hover {
+  color: #ff6b6b;
 }
 
 .newsletter input {
   padding: 10px;
   margin-right: 10px;
+  background-color: #333; /* Dark input background */
+  color: white;
+  border: 1px solid #ff3f3f;
 }
 
 .subscribe-btn {
   padding: 10px 20px;
-  background-color: #ff6b6b;
+  background-color: #ff3f3f;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .subscribe-btn:hover {
-  background-color: #ff3f3f;
+  background-color: #ff1f1f;
 }

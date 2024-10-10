@@ -23,6 +23,9 @@ const HomePage = () => {
   const handleExplore = () => {
     navigate('/ExploreEvents');
   };
+  const handleRedirect = (url) => {
+    window.location.href = url; // Redirect to the specified URL
+  };
 
   // Settings for the react-slick carousel
   const settings = {
@@ -78,7 +81,7 @@ const HomePage = () => {
             </p>
             <div className="cta-buttons">
               <button className="cta-btn" onClick={handleExplore}>Explore Events</button>
-              <button className="cta-btn">Create Profile</button>
+              <button className="cta-btn" onClick={()=>handleRedirect('land')}>Create Profile</button>
             </div>
           </div>
           
