@@ -1,0 +1,88 @@
+/* src/components/StaffAuth.css */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a; /* Dark background for a rebel vibe */
+}
+
+.auth-page {
+    display: flex;
+    flex-direction: column; /* Arrange children in a column */
+    align-items: center; /* Center align items */
+    height: 100vh; /* Full height */
+    position: relative; /* For background shapes */
+    overflow: hidden; /* Hide overflow for creative effects */
+}
+
+.page-title {
+    font-size: 36px; /* Size of the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    color: #ff3d00; /* Rebel orange color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    z-index: 1; /* Bring the title above the background */
+    position: relative; /* Relative position for stacking */
+}
+
+.auth-form {
+    z-index: 1; /* Bring the form above the background */
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    display: flex;
+    flex-direction: column; /* Stack the form elements */
+    width: 300px; /* Fixed width for the form */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+label {
+    margin-bottom: 5px; /* Space below the label */
+    font-weight: bold; /* Bold labels */
+    color: #333; /* Dark text color */
+}
+
+input {
+    padding: 10px; /* Padding inside input fields */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners for input fields */
+    width: 100%; /* Full width input */
+    transition: border 0.3s; /* Smooth border effect */
+}
+
+input:focus {
+    border-color: #ff3d00; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.auth-button {
+    padding: 10px; /* Padding for the button */
+    background-color: #ff3d00; /* Rebel orange */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Smooth background color effect */
+}
+
+.auth-button:hover {
+    background-color: #e64a00; /* Darker orange on hover */
+}
+
+.toggle-link {
+    margin-top: 10px; /* Space above the toggle link */
+    color: #ff3d00; /* Rebel orange color */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.error {
+    color: red; /* Error message color */
+    font-size: 14px; /* Font size for error messages */
+    margin-top: 5px; /* Space above error messages */
+}
