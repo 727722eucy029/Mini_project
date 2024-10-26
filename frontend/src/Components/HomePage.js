@@ -1,17 +1,21 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './HomePage.css'; // Add CSS styles
-import Seminar from '../Pictures/Seminar.jpg';
-import Hackathon from '../Pictures/Hackathons.jpg';
-import Cultural from '../Pictures/cultural.jpg';
-import Workshop from '../Pictures/workshop.jpg';
-import Conference from '../Pictures/conference.jpg';
+import Seminar from './Pictures/Seminar.jpg';
+import Hackathon from './Pictures/Hackathons.jpg';
+import Cultural from './Pictures/cultural.jpg';
+import Workshop from './Pictures/workshop.jpg';
+import Conference from './Pictures/conference.jpg';
 
 const HomePage = () => {
   const navigate = useNavigate();
-  
-  // Sample data for the carousel items
+  const location = useLocation();
+  const { username, role: userRole } = location.state || {};
+// Correctly destructuring username
+  console.log('User Name:', username);
+  console.log('User Role:', userRole);
+
   const carouselItems = [
     { imgSrc: Seminar, title: 'Seminars' },
     { imgSrc: Hackathon, title: 'Hackathons' },
@@ -23,11 +27,11 @@ const HomePage = () => {
   const handleExplore = () => {
     navigate('/ExploreEvents');
   };
+
   const handleRedirect = (url) => {
     window.location.href = url; // Redirect to the specified URL
   };
 
-  // Settings for the react-slick carousel
   const settings = {
     dots: true,
     infinite: true,
@@ -69,6 +73,20 @@ const HomePage = () => {
         </nav>
       </header>
 
+      {/* Welcome Message */}
+      <div className="welcome-message">
+        <h2>Welcome, {username || 'User'}!</h2> {/* Displaying username */}
+      </div>
+
+      {/* Conditionally Render Post Events button for faculty users */}
+      {userRole === 'faculty' && (
+        <div className="post-event">
+          <button className="cta-btn" onClick={() => navigate('/post-event')}>
+            Post Event
+          </button>
+        </div>
+      )}
+
       {/* Carousel Section */}
       <section className="carousel-section">
         <div className="carousel-container">
@@ -81,10 +99,10 @@ const HomePage = () => {
             </p>
             <div className="cta-buttons">
               <button className="cta-btn" onClick={handleExplore}>Explore Events</button>
-              <button className="cta-btn" onClick={()=>handleRedirect('land')}>Create Profile</button>
+              <button className="cta-btn" onClick={() => handleRedirect('land')}>Create Profile</button>
             </div>
           </div>
-          
+
           <div className="carousel-wrapper">
             <Slider {...settings}>
               {carouselItems.map((item, index) => (

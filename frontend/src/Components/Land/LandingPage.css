@@ -1,13 +1,12 @@
-/* src/components/LandingPage.css */
-/* * {
+* {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #1a1a1a; /* Dark background for a rebel vibe 
-} */
+    background-color: #2c3e50; /* Darker background for a sleek vibe */
+}
 
 .landing-page {
     display: flex;
@@ -16,26 +15,33 @@ body {
     height: 100vh; /* Full height */
     position: relative; /* For background shapes */
     overflow: hidden; /* Hide overflow for creative effects */
+    color: white; /* Text color for better contrast */
 }
 
 .background-shape {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 500px;
-    height: 500px;
-    background-color: rgba(255, 61, 0, 0.2); /* Light rebel color */
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 61, 0, 0.3), rgba(255, 61, 0, 0) 70%); /* Radial gradient for depth */
     border-radius: 50%; /* Circular shape */
-    filter: blur(100px); /* Blur effect for background */
+    filter: blur(80px); /* Slightly blurred effect */
     z-index: 0; /* Behind other elements */
     transform: translate(-50%, -50%); /* Center the shape */
 }
 
+.logo-image {
+    width: 200px; /* Width of the logo image */
+    margin: 20px 0; /* Margin for spacing */
+    z-index: 1; /* Bring the image above the background */
+}
+
 .page-title {
-    font-size: 36px; /* Size of the heading */
-    margin-bottom: 20px; /* Space below the heading */
+    font-size: 48px; /* Size of the heading */
+    margin-bottom: 30px; /* Space below the heading */
     color: #ff3d00; /* Rebel orange color */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Slight shadow for depth */
     z-index: 1; /* Bring the title above the background */
     position: relative; /* Relative position for stacking */
 }
@@ -44,44 +50,45 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around; /* Space between compartments */
-    align-items: center; /* Center align vertically */
+    align-items: flex-end; /* Align compartments at the bottom */
     flex-grow: 1; /* Allow the container to grow */
     width: 100%; /* Full width */
     z-index: 1; /* Bring the compartments above the background */
+    padding-bottom: 20px; /* Space at the bottom for alignment */
 }
 
 .compartment {
-    flex: 1; /* Equal space for each compartment */
-    margin: 0 10px;
-    padding: 40px; /* Increased padding for larger compartments */
+    flex: 0 1 150px; /* Fixed width for smaller compartments */
+    margin: 0 10px; /* Reduced margin for a tighter layout */
+    padding: 15px; /* Reduced padding for smaller compartments */
     border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth effects */
-    background: white; /* White background for compartments */
+    background: #e74c3c; /* Striking red background */
     cursor: pointer; /* Change cursor to pointer for clickable effect */
     position: relative; /* Position for pseudo-elements */
     overflow: hidden; /* Hide overflow for animations */
-    min-height: 500px; /* Set the minimum height for compartments to 500px */
+    color: white; /* Text color for headings */
+    text-align: center; /* Center align text */
 }
 
 .compartment:hover {
     transform: scale(1.05); /* Zoom effect on hover */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
 }
 
 .compartment h2 {
-    font-size: 28px; /* Increased font size for headings */
-    margin-bottom: 10px;
-    color: #ff3d00; /* Rebel orange color */
+    font-size: 20px; /* Decreased font size for headings */
+    margin-bottom: 10px; /* Space below the heading */
+    color: #fff; /* White color for headings */
 }
 
 .compartment p {
-    font-size: 18px; /* Increased font size for paragraphs */
-    line-height: 1.5;
-    color: #333; /* Dark text color */
+    font-size: 14px; /* Smaller font size for paragraphs */
+    color: #fff; /* White color for paragraphs */
 }
 
-/* Add a subtle animation */
+/* Optional: Add hover effect for compartments */
 .compartment::after {
     content: '';
     position: absolute;
@@ -89,7 +96,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2); /* Subtle overlay effect */
     opacity: 0;
     transition: opacity 0.3s ease; /* Smooth transition for the overlay */
 }

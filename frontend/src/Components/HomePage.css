@@ -17,7 +17,8 @@
 
 .carousel-text {
   flex: 1;
-  max-width: 40%;
+  max-width: 45%; /* Adjust width */
+  padding: 20px; /* Add padding */
   text-align: left;
   color: #e0e0e0; /* Light gray text for contrast */
 }
@@ -79,6 +80,29 @@
   color: #ff6b6b;
 }
 
+/* Post Event Button */
+.post-event {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.post-event .cta-btn {
+  padding: 15px 30px;
+  background-color: #ff3f3f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: transform 0.2s ease; /* Animation for hover */
+}
+
+.post-event .cta-btn:hover {
+  background-color: #ff1f1f;
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
 /* Call to Action Buttons */
 .cta-buttons .cta-btn {
   margin: 10px;
@@ -125,22 +149,17 @@
 .event-card h3 {
   font-size: 20px;
   margin: 15px 0;
-  color: #ff3f3f; /* Red for headings */
-}
-
-.event-card p {
-  font-size: 16px;
-  margin: 10px 0;
-  color: #e0e0e0; /* Light gray text */
+  color: #ff3f3f; /* Bold red text */
 }
 
 .event-btn {
-  margin-bottom: 20px;
-  padding: 10px 20px;
   background-color: #ff3f3f;
   color: white;
   border: none;
+  padding: 10px 20px;
   cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
 .event-btn:hover {
@@ -149,28 +168,26 @@
 
 /* Footer */
 .footer {
-  padding: 40px 20px;
-  background-color: #111;
-  color: #ff3f3f;
+  background-color: #111; /* Deep black background */
+  color: #fff;
+  padding: 20px;
   text-align: center;
 }
 
-.quick-links a, .social-media a {
+.quick-links a,
+.social-media a {
   color: #ff3f3f;
-  margin: 0 15px;
-  text-decoration: none;
+  margin: 0 10px;
 }
 
-.quick-links a:hover, .social-media a:hover {
+.quick-links a:hover,
+.social-media a:hover {
   color: #ff6b6b;
 }
 
 .newsletter input {
   padding: 10px;
-  margin-right: 10px;
-  background-color: #333; /* Dark input background */
-  color: white;
-  border: 1px solid #ff3f3f;
+  margin-top: 10px;
 }
 
 .subscribe-btn {
@@ -179,6 +196,7 @@
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .subscribe-btn:hover {

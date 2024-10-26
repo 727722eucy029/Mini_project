@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ExploreEventsPage.css';
 import EventModal from './EventModal'; // Modal component for viewing event details
+import axios from 'axios';
 
 const ExploreEventsPage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [events, setEvents] = useState([]);
 
-  const events = [
-    {
-      id: 1,
-      image: 'event1.jpg',
-      title: 'Annual Hackathon',
-      date: '15th Oct',
-      location: 'Hall A',
-    },
-    {
-      id: 2,
-      image: 'event2.jpg',
-      title: 'AI Workshop',
-      date: '20th Oct',
-      location: 'Lab B',
-    },
-  ];
+  useEffect(() => {
+    // Fetch events from the backend
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/event'); // Adjust API URL as needed
+        setEvents(response.data);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   const handleEventClick = (event) => {
     setSelectedEvent(event);
@@ -31,9 +30,7 @@ const ExploreEventsPage = () => {
   };
 
   return (
-    
     <div className="explore-events-page">
-      {/* Other sections omitted for brevity */}
       <header className="header">
         <div className="logo">College Logo</div>
         <nav className="nav">
@@ -44,13 +41,14 @@ const ExploreEventsPage = () => {
           <a href="#help">Help</a>
         </nav>
       </header>
+
       <div className="events-grid">
         {events.map((event) => (
           <div key={event.id} className="event-card" onClick={() => handleEventClick(event)}>
-            <img src={event.image} alt={event.title} />
+            <img src={event.image || 'default-image.jpg'} alt={event.title} />
             <div className="event-card-content">
               <h3>{event.title}</h3>
-              <p>Date: {event.date} | Location: {event.location}</p>
+              <p>Date: {event.date} | Time: {event.time} | Location: {event.location}</p>
               <button className="event-btn">View Details</button>
             </div>
           </div>
