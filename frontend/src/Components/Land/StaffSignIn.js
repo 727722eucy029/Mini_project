@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import Axios for HTTP requests
-import './StaffAuth.css'; // Import the CSS for styling
+import axios from 'axios';
+import './StaffAuth.css';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext'; // Import useAuth
 
 const StaffSignIn = () => {
-  const [email, setEmail] = useState('');
+  const { setEmail } = useAuth(); // Get setEmail from context
+  const [email, setEmailLocal] = useState(''); // Local state for email
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
@@ -14,7 +16,6 @@ const StaffSignIn = () => {
     e.preventDefault();
     const formErrors = {};
 
-    // Validate email and password
     if (!email) {
       formErrors.email = "Email is required";
     } else if (!email.endsWith(emailDomain)) {
@@ -25,39 +26,29 @@ const StaffSignIn = () => {
       formErrors.password = "Password is required";
     }
 
-    // If no validation errors, proceed with login attempt
     if (Object.keys(formErrors).length === 0) {
       try {
-        // Make a GET request to check if the user exists by email
         const response = await axios.get(`http://localhost:8080/api/users/email/${email}`);
-
         const user = response.data;
 
-        // Check if the retrieved user's password matches the input password
+        // Password comparison should ideally be done with a secure hash
         if (user && user.pass === password) {
-          // Credentials are correct, navigate to HomePage with user info
           alert("Sign-in successful!");
-          console.log("Signed in with:", { email, password });
-          console.log("User object:", user);
+          setEmail(email); // Store email in global state
           navigate('/HomePage', { state: { username: user.userName, role: user.role } });
-
-          // Pass username and role
         } else {
-          // Password mismatch
           setErrors({ password: "Incorrect password" });
         }
       } catch (error) {
         console.error("Error during sign-in:", error);
         if (error.response && error.response.status === 404) {
-          // User not found in the database
           setErrors({ email: "User not found" });
         } else {
-          // Handle general error
           setErrors({ general: "An error occurred. Please try again later." });
         }
       }
     } else {
-      setErrors(formErrors); // Set validation errors to state
+      setErrors(formErrors);
     }
   };
 
@@ -71,7 +62,7 @@ const StaffSignIn = () => {
             type="email"
             id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmailLocal(e.target.value)} // Update local state
             required
           />
           {errors.email && <span className="error">{errors.email}</span>}

@@ -27,6 +27,9 @@ const HomePage = () => {
   const handleExplore = () => {
     navigate('/ExploreEvents');
   };
+  const handlepost= () => {
+    navigate('/Post');
+  };
 
   const handleRedirect = (url) => {
     window.location.href = url; // Redirect to the specified URL
@@ -67,7 +70,9 @@ const HomePage = () => {
         <nav className="nav">
           <a href="#home">Home</a>
           <a href="#events">Events</a>
-          <a href="#profile">Profile</a>
+
+<button onClick={() => navigate('/ProfilePage')}>Profile</button>
+
           <a href="#admin">Admin</a>
           <a href="#help">Help</a>
         </nav>
@@ -81,7 +86,7 @@ const HomePage = () => {
       {/* Conditionally Render Post Events button for faculty users */}
       {userRole === 'faculty' && (
         <div className="post-event">
-          <button className="cta-btn" onClick={() => navigate('/post-event')}>
+          <button className="cta-btn" onClick={handlepost}>
             Post Event
           </button>
         </div>
