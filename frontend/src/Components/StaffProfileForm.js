@@ -3,7 +3,7 @@ import axios from 'axios';
 import './ProfileForm.css';
 import { useNavigate } from 'react-router-dom';
 
-const ProfileForm = ({ existingProfile }) => {
+const ProfileForm = ({ existingProfile, role }) => {
     const [name, setName] = useState(existingProfile?.name || '');
     const [email, setEmail] = useState(existingProfile?.email || '');
     const [year, setYear] = useState(existingProfile?.year || '');
@@ -37,13 +37,12 @@ const ProfileForm = ({ existingProfile }) => {
         const profileData = {
             name,
             email,
-            year,
+            year: role === 'student' ? year : null, // Only save 'year' if role is student
             major,
             interests,
         };
 
         try {
-            // Check if we're updating an existing profile
             const response = existingProfile
                 ? await axios.put(`http://localhost:8080/api/profile/${existingProfile.id}`, profileData)
                 : await axios.post('http://localhost:8080/api/profile', profileData);
@@ -94,21 +93,24 @@ const ProfileForm = ({ existingProfile }) => {
                     />
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="year">Year</label>
-                    <select
-                        id="year"
-                        value={year}
-                        onChange={(e) => setYear(e.target.value)}
-                        required
-                    >
-                        <option value="">Select Year</option>
-                        <option value="I">I</option>
-                        <option value="II">II</option>
-                        <option value="III">III</option>
-                        <option value="IV">IV</option>
-                    </select>
-                </div>
+                {/* Only show 'Year' field if role is student */}
+                {role === 'student' && (
+                    <div className="form-group">
+                        <label htmlFor="year">Year</label>
+                        <select
+                            id="year"
+                            value={year}
+                            onChange={(e) => setYear(e.target.value)}
+                            required
+                        >
+                            <option value="">Select Year</option>
+                            <option value="I">I</option>
+                            <option value="II">II</option>
+                            <option value="III">III</option>
+                            <option value="IV">IV</option>
+                        </select>
+                    </div>
+                )}
 
                 <div className="form-group">
                     <label htmlFor="major">Major</label>

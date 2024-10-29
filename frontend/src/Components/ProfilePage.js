@@ -10,6 +10,16 @@ const ProfilePage = () => {
     const [error, setError] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [updatedProfile, setUpdatedProfile] = useState({});
+    const [isEditingInterests, setIsEditingInterests] = useState(false);
+    const [updatedInterests, setUpdatedInterests] = useState([]);
+    const [showInterestDropdown, setShowInterestDropdown] = useState(false);
+
+    const interestOptions = [
+        "Hackathons", "AI/ML", "Web Development", "Cybersecurity", "Data Science",
+        "Graphic Design", "Public Speaking", "Project Management", "Photography",
+        "Marketing", "Networking", "Content Writing", "Programming", "Blockchain",
+        "UI/UX Design", "Machine Learning", "Event Planning", "Team Leadership"
+    ];
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -21,9 +31,10 @@ const ProfilePage = () => {
 
             try {
                 const response = await axios.get(`http://localhost:8080/api/profile/email/${encodeURIComponent(email)}`);
-                console.log("Fetched profile data:", response.data); // Debugging
+                console.log("Fetched profile data:", response.data);
                 setProfile(response.data);
-                setUpdatedProfile(response.data); // Set initial state for editing
+                setUpdatedProfile(response.data);
+                setUpdatedInterests(response.data.interests || []); // Initialize interests
             } catch (err) {
                 setError('Failed to fetch profile details.');
                 console.error(err);
@@ -47,13 +58,38 @@ const ProfilePage = () => {
     const handleSave = async () => {
         try {
             await axios.put(`http://localhost:8080/api/profile/email/${encodeURIComponent(email)}`, updatedProfile);
-            setProfile(updatedProfile); // Update local state with the new values
+            setProfile(updatedProfile);
             alert('Profile updated successfully!');
         } catch (error) {
             console.error('Error updating profile:', error);
             alert('Failed to update profile. Please try again.');
         }
-        setIsEditing(false); // Exit edit mode after saving
+        setIsEditing(false);
+    };
+
+    const toggleInterestDropdown = () => {
+        setShowInterestDropdown(!showInterestDropdown);
+    };
+
+    const handleInterestChange = (interest) => {
+        setUpdatedInterests((prevInterests) =>
+            prevInterests.includes(interest)
+                ? prevInterests.filter((i) => i !== interest)
+                : [...prevInterests, interest]
+        );
+    };
+
+    const handleSaveInterests = async () => {
+        try {
+            await axios.put(`http://localhost:8080/api/profile/email/${encodeURIComponent(email)}/interests`, updatedInterests);
+            setProfile((prev) => ({ ...prev, interests: updatedInterests })); // Update profile with new interests
+            alert('Interests updated successfully!');
+        } catch (error) {
+            console.error('Error updating interests:', error);
+            alert('Failed to update interests. Please try again.');
+        }
+        setIsEditingInterests(false);
+        setShowInterestDropdown(false); // Close dropdown after saving
     };
 
     if (loading) return <div>Loading...</div>;
@@ -67,7 +103,7 @@ const ProfilePage = () => {
     const { name = 'N/A', email: profileEmail = 'N/A', year = 'N/A', major = 'N/A', interests = [], registeredEvents = [] } = profile;
 
     return (
-        <div className="profile-page" style={{ backgroundColor: 'white', color: 'black', padding: '20px' }}> 
+        <div className="profile-page" style={{ backgroundColor: 'white', color: 'black', padding: '20px' }}>
             <header className="profile-header">
                 <h1>Profile</h1>
             </header>
@@ -79,10 +115,10 @@ const ProfilePage = () => {
                     <p>
                         Year: {isEditing ? (
                             <select name="year" value={updatedProfile.year} onChange={handleChange}>
-                                <option value="Freshman">I</option>
-                                <option value="Sophomore">II</option>
-                                <option value="Junior">III</option>
-                                <option value="Senior">IV</option>
+                                <option value="I">I</option>
+                                <option value="II">II</option>
+                                <option value="III">III</option>
+                                <option value="IV">IV</option>
                             </select>
                         ) : year}
                     </p>
@@ -97,15 +133,38 @@ const ProfilePage = () => {
             <section className="interests">
                 <h2>Your Interests</h2>
                 <div className="interests-list">
-                    {interests.length > 0 ? (
-                        interests.map((interest, index) => (
-                            <span key={index} className="interest-tag">{interest}</span>
-                        ))
+                    {isEditingInterests ? (
+                        <div className="custom-dropdown" onClick={toggleInterestDropdown}>
+                            {updatedInterests.length > 0 ? updatedInterests.join(', ') : 'Select Interests'}
+                            <span className="dropdown-arrow">▼</span>
+                        </div>
                     ) : (
-                        <p>No interests listed.</p>
+                        updatedInterests.length > 0 ? (
+                            updatedInterests.map((interest, index) => (
+                                <span key={index} className="interest-tag">{interest}</span>
+                            ))
+                        ) : (
+                            <p>No interests listed.</p>
+                        )
+                    )}
+                    {isEditingInterests && showInterestDropdown && (
+                        <div className="dropdown-menu">
+                            {interestOptions.map((interest) => (
+                                <label key={interest} className="dropdown-item">
+                                    <input
+                                        type="checkbox"
+                                        checked={updatedInterests.includes(interest)}
+                                        onChange={() => handleInterestChange(interest)}
+                                    />
+                                    {interest}
+                                </label>
+                            ))}
+                        </div>
                     )}
                 </div>
-                <button className="edit-interests-btn">Edit Interests</button>
+                <button className="edit-interests-btn" onClick={isEditingInterests ? handleSaveInterests : () => { setIsEditingInterests(true); toggleInterestDropdown(); }}>
+                    {isEditingInterests ? 'Save Interests' : 'Edit Interests'}
+                </button>
             </section>
 
             <section className="registered-events">

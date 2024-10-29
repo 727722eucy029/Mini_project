@@ -26,7 +26,7 @@ public class ProfileEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true) // Making email unique to avoid duplication
     private String email;
 
     @Column(name = "year")
@@ -37,8 +37,6 @@ public class ProfileEntity {
 
     @ElementCollection
     @CollectionTable(name = "interests", joinColumns = @JoinColumn(name = "profile_id"))
-    @Column(name = "interest")
-    private List<String> interests;
-
-  
+    @AttributeOverride(name = "interest", column = @Column(name = "interest"))
+    private List<Interest> interests;
 }
