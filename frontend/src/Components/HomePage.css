@@ -20,7 +20,10 @@
   max-width: 45%; /* Adjust width */
   padding: 20px; /* Add padding */
   text-align: left;
-  color: #e0e0e0; /* Light gray text for contrast */
+  color: #ff3f3f; /* Set to theme color */
+  animation: fadeIn 1.5s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Add subtle shadow for depth */
+  font-size: 20px; /* Increased font size */
 }
 
 .carousel-wrapper {
@@ -36,15 +39,28 @@
   height: 300px;
   object-fit: cover;
   border: 3px solid #ff3f3f; /* Bold red border */
+  transition: transform 0.3s ease; /* Animation on hover */
 }
 
+.carousel-item img:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+.carousel-item h3 {
+  color: #ff3f3f; /* Title color in theme */
+  font-size: 24px; /* Adjust title font size */
+  margin-top: 10px; /* Space above titles */
+}
+
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .carousel-container {
     flex-direction: column;
     text-align: center;
   }
 
-  .carousel-text, .carousel-wrapper {
+  .carousel-text,
+  .carousel-wrapper {
     max-width: 100%;
   }
 
@@ -60,13 +76,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #111; /* Deep black background */
-  color: #ff3f3f; /* Bold red text */
+  background-color: #111;
+  color: #ff3f3f;
+  border-bottom: 2px solid #ff3f3f;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
   font-size: 24px;
-  font-family: 'Impact', sans-serif; /* Bold, rebellious font */
+  font-family: 'Impact', sans-serif;
 }
 
 .nav a {
@@ -74,10 +92,12 @@
   margin: 0 15px;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.2s ease-in-out;
 }
 
 .nav a:hover {
   color: #ff6b6b;
+  text-decoration: underline;
 }
 
 /* Post Event Button */
@@ -95,12 +115,13 @@
   font-family: 'Arial Black', sans-serif;
   font-size: 18px;
   border-radius: 5px;
-  transition: transform 0.2s ease; /* Animation for hover */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .post-event .cta-btn:hover {
   background-color: #ff1f1f;
-  transform: scale(1.05); /* Scale effect on hover */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(255, 31, 31, 0.4);
 }
 
 /* Call to Action Buttons */
@@ -111,17 +132,19 @@
   color: white;
   border: none;
   cursor: pointer;
-  font-family: 'Arial Black', sans-serif; /* Bold, edgy font */
+  font-family: 'Arial Black', sans-serif;
+  transition: background-color 0.2s ease-in-out, transform 0.2s;
 }
 
 .cta-buttons .cta-btn:hover {
   background-color: #ff1f1f;
+  transform: translateY(-3px);
 }
 
 /* Featured Events */
 .featured-events {
   padding: 50px 20px;
-  background-color: #2a2a2a; /* Dark gray background */
+  background-color: #2a2a2a;
 }
 
 .event-cards {
@@ -137,19 +160,30 @@
   width: 300px;
   margin: 20px;
   text-align: center;
-  box-shadow: 0px 4px 8px rgba(255, 63, 63, 0.5); /* Red shadow for the edgy feel */
+  box-shadow: 0px 4px 8px rgba(255, 63, 63, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(255, 63, 63, 0.6);
 }
 
 .event-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  transition: opacity 0.2s ease;
+}
+
+.event-card img:hover {
+  opacity: 0.85;
 }
 
 .event-card h3 {
   font-size: 20px;
   margin: 15px 0;
-  color: #ff3f3f; /* Bold red text */
+  color: #ff3f3f;
 }
 
 .event-btn {
@@ -160,6 +194,7 @@
   cursor: pointer;
   border-radius: 5px;
   margin-bottom: 15px;
+  transition: background-color 0.2s ease;
 }
 
 .event-btn:hover {
@@ -168,26 +203,33 @@
 
 /* Footer */
 .footer {
-  background-color: #111; /* Deep black background */
+  background-color: #111;
   color: #fff;
   padding: 20px;
   text-align: center;
+  border-top: 2px solid #ff3f3f;
 }
 
 .quick-links a,
 .social-media a {
   color: #ff3f3f;
   margin: 0 10px;
+  transition: color 0.2s ease;
 }
 
 .quick-links a:hover,
 .social-media a:hover {
   color: #ff6b6b;
+  text-decoration: underline;
 }
 
 .newsletter input {
   padding: 10px;
   margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ff3f3f;
+  background-color: #222;
+  color: white;
 }
 
 .subscribe-btn {
@@ -197,8 +239,41 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  transition: background-color 0.2s ease;
 }
 
 .subscribe-btn:hover {
   background-color: #ff1f1f;
 }
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Welcome Message */
+.welcome-message {
+  margin-top: 50px; /* Moves the text further down */
+  font-size: 28px; /* Increases font size */
+  color: #ff3f3f; /* Bright red color for visibility */
+  font-weight: bold;
+  text-align: center;
+}
+/* Upcoming Events */
+.featured-events h2 {
+  font-size: 32px; /* Increase font size for emphasis */
+  color: #ff3f3f; /* Bold red color */
+  margin: 0 auto 20px; /* Center align with auto margins */
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px; /* Adds spacing between letters */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
+  border-bottom: 3px solid #ff6b6b; /* Adds an underline for separation */
+  padding-bottom: 5px;
+  width: fit-content; /* Shrinks to fit content for centering */
+}
+
