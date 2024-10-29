@@ -3,7 +3,7 @@
   margin-top: 1px;
   padding: 40px;
   text-align: center;
-  background-color: #1a1a1a;
+  background-color: #1a1a1a; /* Dark background */
   padding-bottom: 50px;
 }
 
@@ -17,11 +17,13 @@
 
 .carousel-text {
   flex: 1;
-  max-width: 45%;
-  padding: 20px;
+  max-width: 45%; /* Adjust width */
+  padding: 20px; /* Add padding */
   text-align: left;
-  color: #e0e0e0;
+  color: #ff3f3f; /* Set to theme color */
   animation: fadeIn 1.5s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Add subtle shadow for depth */
+  font-size: 20px; /* Increased font size */
 }
 
 .carousel-wrapper {
@@ -36,21 +38,29 @@
   max-width: 500px;
   height: 300px;
   object-fit: cover;
-  border: 3px solid #ff3f3f;
-  transition: transform 0.3s ease;
+  border: 3px solid #ff3f3f; /* Bold red border */
+  transition: transform 0.3s ease; /* Animation on hover */
 }
 
 .carousel-item img:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
+.carousel-item h3 {
+  color: #ff3f3f; /* Title color in theme */
+  font-size: 24px; /* Adjust title font size */
+  margin-top: 10px; /* Space above titles */
+}
+
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .carousel-container {
     flex-direction: column;
     text-align: center;
   }
 
-  .carousel-text, .carousel-wrapper {
+  .carousel-text,
+  .carousel-wrapper {
     max-width: 100%;
   }
 
@@ -253,3 +263,17 @@
   font-weight: bold;
   text-align: center;
 }
+/* Upcoming Events */
+.featured-events h2 {
+  font-size: 32px; /* Increase font size for emphasis */
+  color: #ff3f3f; /* Bold red color */
+  margin: 0 auto 20px; /* Center align with auto margins */
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px; /* Adds spacing between letters */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
+  border-bottom: 3px solid #ff6b6b; /* Adds an underline for separation */
+  padding-bottom: 5px;
+  width: fit-content; /* Shrinks to fit content for centering */
+}
+
