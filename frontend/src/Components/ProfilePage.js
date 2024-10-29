@@ -4,7 +4,7 @@ import './ProfilePage.css';
 import { useAuth } from './AuthContext';
 
 const ProfilePage = () => {
-    const { email } = useAuth();
+    const { email, role } = useAuth(); // Added role here
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -112,16 +112,18 @@ const ProfilePage = () => {
                 <div className="profile-details">
                     <h2>{isEditing ? <input type="text" name="name" value={updatedProfile.name} onChange={handleChange} /> : name}</h2>
                     <p>Email: {profileEmail}</p>
-                    <p>
-                        Year: {isEditing ? (
-                            <select name="year" value={updatedProfile.year} onChange={handleChange}>
-                                <option value="I">I</option>
-                                <option value="II">II</option>
-                                <option value="III">III</option>
-                                <option value="IV">IV</option>
-                            </select>
-                        ) : year}
-                    </p>
+                    {role === 'student' && (
+                        <p>
+                            Year: {isEditing ? (
+                                <select name="year" value={updatedProfile.year} onChange={handleChange}>
+                                    <option value="I">I</option>
+                                    <option value="II">II</option>
+                                    <option value="III">III</option>
+                                    <option value="IV">IV</option>
+                                </select>
+                            ) : year}
+                        </p>
+                    )}
                     <p>
                         Major: {isEditing ? <input type="text" name="major" value={updatedProfile.major} onChange={handleChange} /> : major}
                     </p>
