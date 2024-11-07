@@ -2,11 +2,18 @@ package com.example.demo.mapper;
 
 import com.example.demo.dto.ProfileDto;
 import com.example.demo.entity.ProfileEntity;
+import com.example.demo.entity.Interest;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProfileMapper {
 
-    // Mapping from ProfileDto to ProfileEntity
     public static ProfileEntity mapToProfile(ProfileDto profileDto) {
+        List<Interest> interests = profileDto.getInterests().stream()
+                .map(interest -> new Interest(interest, profileDto.getEmail()))  // Set email here
+                .collect(Collectors.toList());
+
         return new ProfileEntity(
                 profileDto.getId(),
                 profileDto.getProfilePic(),
@@ -14,12 +21,15 @@ public class ProfileMapper {
                 profileDto.getEmail(),
                 profileDto.getYear(),
                 profileDto.getMajor(),
-                profileDto.getInterests()
+                interests
         );
     }
 
-    // Mapping from ProfileEntity to ProfileDto
     public static ProfileDto mapToProfileDto(ProfileEntity profileEntity) {
+        List<String> interests = profileEntity.getInterests().stream()
+                .map(Interest::getInterest)
+                .collect(Collectors.toList());
+
         return new ProfileDto(
                 profileEntity.getId(),
                 profileEntity.getProfilePic(),
@@ -27,8 +37,7 @@ public class ProfileMapper {
                 profileEntity.getEmail(),
                 profileEntity.getYear(),
                 profileEntity.getMajor(),
-                profileEntity.getInterests()
-            
+                interests
         );
     }
 }

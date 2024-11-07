@@ -23,6 +23,8 @@ const HomePage = () => {
     { imgSrc: Workshop, title: 'Workshops' },
     { imgSrc: Conference, title: 'Conferences' },
   ];
+  
+
 
   const handleExplore = () => {
     navigate('/ExploreEvents');

@@ -34,19 +34,32 @@ public class ProfileController {
         List<ProfileDto> profiles = profileService.getAllProfiles();
         return ResponseEntity.ok(profiles);
     }
+
     @GetMapping("/email/{email}")
     public ResponseEntity<ProfileDto> getProfileByEmail(@PathVariable("email") String email) {
         ProfileDto profileDto = profileService.getProfileByEmail(email);
         return ResponseEntity.ok(profileDto);
     }
 
-
-   
-
     @PutMapping("/{id}") // This is correct
     public ResponseEntity<ProfileDto> updateProfile(@PathVariable("id") Long profileId,
                                                     @RequestBody ProfileDto updatedProfile) {
         ProfileDto profileDto = profileService.updateProfile(profileId, updatedProfile);
+        return ResponseEntity.ok(profileDto);
+    }
+
+    @PutMapping("/email/{email}")
+    public ResponseEntity<ProfileDto> updateProfileByEmail(@PathVariable("email") String email,
+                                                           @RequestBody ProfileDto updatedProfile) {
+        ProfileDto profileDto = profileService.updateProfileByEmail(email, updatedProfile);
+        return ResponseEntity.ok(profileDto);
+    }
+
+    // New endpoint to update interests based on email
+    @PutMapping("/email/{email}/interests")
+    public ResponseEntity<ProfileDto> updateInterestsByEmail(@PathVariable("email") String email,
+                                                               @RequestBody List<String> interests) {
+        ProfileDto profileDto = profileService.updateInterestsByEmail(email, interests);
         return ResponseEntity.ok(profileDto);
     }
 

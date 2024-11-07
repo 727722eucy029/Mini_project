@@ -8,6 +8,41 @@
     min-height: 100vh;
     font-family: 'Arial', sans-serif;
 }
+.custom-dropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    width: 100%;
+    z-index: 1000; /* Ensure this is higher than other overlapping elements */
+    display: block; /* Ensure it is displayed */
+    padding: 0; /* Reset padding */
+}
+
+.dropdown-item {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    padding: 10px; /* Maintain padding for the item */
+    cursor: pointer;
+}
+
+.dropdown-item input[type="checkbox"] {
+    margin-right: 8px; /* Adjust space between checkbox and text */
+}
+
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-arrow {
+    margin-left: 10px;
+}
 
 .profile-header {
     background-color: #222;

@@ -55,11 +55,11 @@ const StaffSignUp = () => {
             email, 
             pass: password,
             userName: username,
-            role: 'faculty'
+            role: 'student'
           });
           alert("Account created successfully!");
           setEmail(email); // Store email in global state
-          navigate('/StaffProfileForm', { state: { username, role: 'faculty' } });
+          navigate('/ProfileForm', { state: { username, role: 'faculty' } });
           // Clear local state after successful signup
           setEmailLocal('');
           setUsername('');
@@ -145,7 +145,9 @@ const StaffSignUp = () => {
       <p className="toggle-link" onClick={() => navigate('/')}>
         Already have an account? Sign In
       </p>
-      
+      <p className="toggle-link">
+        If you are faculty, <span onClick={() => navigate('/staffsignup')} className="link">sign up here</span>.
+      </p>
     </div>
   );
 };
