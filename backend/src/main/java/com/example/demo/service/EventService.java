@@ -1,12 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.EventDto;
+import com.example.demo.entity.EventEntity;
+
 import java.util.List;
 
 public interface EventService {
     EventDto createEvent(EventDto eventDto);
 
-    EventDto getEventById(Long eventId);
+    EventEntity getEventById(Long eventId);
+    
 
     List<EventDto> getAllEvents();
 

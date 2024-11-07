@@ -4,37 +4,80 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
-    justify-content: center;
     align-items: center;
-}
-
-.modal-content {
-    background: white;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
+    width: 80%;
     max-width: 500px;
-    width: 90%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative; /* Needed for absolute positioning of close button */
-}
-
-.close-button {
+    position: relative;
+  }
+  
+  .close-button {
     position: absolute;
     top: 10px;
-    right: 15px;
-    font-size: 1.5rem;
+    right: 10px;
+    font-size: 24px;
     cursor: pointer;
-}
-
-/* Optional: Add styles for ingredients and instructions */
-ul {
-    padding-left: 20px;
-}
-
-h2 {
-    margin-top: 0;
-}
-
-/* Add additional styles if needed */
+  }
+  
+  .register-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .register-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .registration-form {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+  }
+  
+  .registration-form h3 {
+    margin-bottom: 10px;
+  }
+  
+  .registration-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .registration-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .registration-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .registration-form button:hover {
+    background-color: #218838;
+  }
+  

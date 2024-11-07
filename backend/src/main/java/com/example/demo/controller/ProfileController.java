@@ -63,7 +63,6 @@ public class ProfileController {
         return ResponseEntity.ok(profileDto);
     }
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProfile(@PathVariable("id") Long profileId) {
         profileService.deleteProfile(profileId);

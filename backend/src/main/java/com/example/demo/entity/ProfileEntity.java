@@ -37,6 +37,10 @@ public class ProfileEntity {
 
     @ElementCollection
     @CollectionTable(name = "interests", joinColumns = @JoinColumn(name = "profile_id"))
-    @AttributeOverride(name = "interest", column = @Column(name = "interest"))
+    @Column(name = "interest")
     private List<Interest> interests;
+
+    // Updated field for registered events
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EventRegistration> registeredEvents;
 }

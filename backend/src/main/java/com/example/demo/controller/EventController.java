@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.EventDto;
+import com.example.demo.entity.EventEntity;
+import com.example.demo.mapper.EventMapper;
 import com.example.demo.service.EventService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,7 +27,9 @@ public class EventController {
 
     @GetMapping("/{id}")
     public ResponseEntity<EventDto> getEventById(@PathVariable("id") Long eventId){
-        EventDto eventDto = eventService.getEventById(eventId);
+        // Adjusted to reflect the return type of the service method
+        EventEntity eventEntity = eventService.getEventById(eventId);
+        EventDto eventDto = EventMapper.mapToEventDto(eventEntity); // Convert to EventDto
         return ResponseEntity.ok(eventDto);
     }
 

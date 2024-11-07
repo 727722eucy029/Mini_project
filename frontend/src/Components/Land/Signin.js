@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext'; // Import useAuth
 
 const StaffSignIn = () => {
-  const { setEmail } = useAuth(); // Get setEmail from context
+  const { setEmail, setUserId } = useAuth(); // Get setEmail and setUserId from context
   const [email, setEmailLocal] = useState(''); // Local state for email
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
@@ -15,6 +15,9 @@ const StaffSignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = {};
+
+    // Log the email and password being submitted
+    console.log("Submitting form with Email:", email, "Password:", password);
 
     if (!email) {
       formErrors.email = "Email is required";
@@ -31,16 +34,21 @@ const StaffSignIn = () => {
         const response = await axios.get(`http://localhost:8080/api/users/email/${email}`);
         const user = response.data;
 
+        // Log the user object
+        console.log("User fetched:", user);
+
         // Password comparison should ideally be done with a secure hash
         if (user && user.pass === password) {
           alert("Sign-in successful!");
           setEmail(email); // Store email in global state
+          setUserId(user.id); // Store user ID in global state
           navigate('/HomePage', { state: { username: user.userName, role: user.role } });
         } else {
           setErrors({ password: "Incorrect password" });
         }
+
       } catch (error) {
-        console.error("Error during sign-in:", error);
+        console.error("Error during sign-in:", error); // Log the error details
         if (error.response && error.response.status === 404) {
           setErrors({ email: "User not found" });
         } else {

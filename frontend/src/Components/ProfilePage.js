@@ -169,18 +169,9 @@ const ProfilePage = () => {
                 </button>
             </section>
 
-            <section className="registered-events">
-                <h2>Registered Events</h2>
-                <ul className="events-list">
-                    {registeredEvents.length > 0 ? (
-                        registeredEvents.map((event, index) => (
-                            <li key={index} className="event-item">{event}</li>
-                        ))
-                    ) : (
-                        <p>No events registered.</p>
-                    )}
-                </ul>
-            </section>
+            
+
+
 
             <footer className="profile-footer">
                 <p>© 2024 Your College Event App</p>

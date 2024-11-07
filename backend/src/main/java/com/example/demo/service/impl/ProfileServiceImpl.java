@@ -10,6 +10,7 @@ import com.example.demo.service.ProfileService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,13 +73,19 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public ProfileDto updateInterestsByEmail(String email, List<String> interests) {
-    	 System.out.println("Updating interests for email: " + email);
-    	    System.out.println("New interests: " + interests);
+        System.out.println("Updating interests for email: " + email);
+        System.out.println("New interests: " + interests);
+        
         ProfileEntity profile = profileRepository.findByEmail(email).orElseThrow(
                 () -> new ResourceNotFoundException("Profile does not exist with given email: " + email)
         );
 
-        // Clear existing interests if needed
+        // Initialize the interests list if it is null
+        if (profile.getInterests() == null) {
+            profile.setInterests(new ArrayList<>());
+        }
+
+        // Clear existing interests
         profile.getInterests().clear();
 
         // Create new Interest objects and set their fields

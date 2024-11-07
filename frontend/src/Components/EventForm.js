@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './EventForm.css';
+import { useAuth } from './AuthContext';
 
 const EventForm = () => {
+  const { email } = useAuth(); // Access the user's email from AuthContext
+
   const [eventDetails, setEventDetails] = useState({
     title: '',
     description: '',
@@ -12,7 +15,19 @@ const EventForm = () => {
     category: '',
     status: 0, // Default status value
     registrationLink: '',
+    posterEmail: '', // Initialize as empty
   });
+
+  useEffect(() => {
+    if (email) {
+      setEventDetails((prevDetails) => ({
+        ...prevDetails,
+        posterEmail: email,
+      }));
+    }
+    console.log("User email from AuthContext:", email);
+    console.log("Updated event details:", eventDetails);
+  }, [email]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,8 +39,8 @@ const EventForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Final event details to submit:", eventDetails);
     try {
-      // Make a POST request to the backend API
       const response = await fetch('http://localhost:8080/api/event', {
         method: 'POST',
         headers: {
@@ -41,7 +56,6 @@ const EventForm = () => {
       const data = await response.json();
       console.log('Event created successfully:', data);
 
-      // Clear the form after successful submission
       setEventDetails({
         title: '',
         description: '',
@@ -52,6 +66,7 @@ const EventForm = () => {
         category: '',
         status: 1,
         registrationLink: '',
+        posterEmail: email,
       });
     } catch (error) {
       console.error('Error submitting event:', error);

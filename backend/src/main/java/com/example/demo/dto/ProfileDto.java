@@ -23,6 +23,7 @@ public class ProfileDto {
     private String year;
     private String major;
     private List<String> interests; // Now stores only interest names as strings
+    private List<EventRegistrationDto> registeredEvents; // New field for registered events
 
     // Constructor to create ProfileDto from ProfileEntity
     public ProfileDto(ProfileEntity profile) {
@@ -32,10 +33,15 @@ public class ProfileDto {
         this.email = profile.getEmail();
         this.year = profile.getYear();
         this.major = profile.getMajor();
-        
+
         // Convert List<Interest> to List<String> by extracting the 'interest' field
         this.interests = profile.getInterests().stream()
             .map(Interest::getInterest) // Extracts only the interest name as a string
+            .collect(Collectors.toList());
+
+        // Map registered events from ProfileEntity if applicable
+        this.registeredEvents = profile.getRegisteredEvents().stream()
+            .map(EventRegistrationDto::new) // Make sure EventRegistrationDto has the correct constructor
             .collect(Collectors.toList());
     }
 }

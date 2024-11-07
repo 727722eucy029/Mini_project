@@ -26,12 +26,12 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public EventDto getEventById(Long eventId) {
-        EventEntity event = eventRepository.findById(eventId).orElseThrow(
+    public EventEntity getEventById(Long eventId) {
+        return eventRepository.findById(eventId).orElseThrow(
                 () -> new ResourceNotFoundException("Event does not exist with a given id: " + eventId)
         );
-        return EventMapper.mapToEventDto(event);
     }
+
 
     @Override
     public List<EventDto> getAllEvents() {
